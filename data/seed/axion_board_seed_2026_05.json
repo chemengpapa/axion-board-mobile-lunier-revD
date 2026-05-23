@@ -1,0 +1,262 @@
+{
+  "schema_version": "axion-board-mobile-lunier.revD",
+  "month": "2026-05",
+  "month_label": "2026年5月",
+  "theme": "今月触る棚を少なく選び、触らない棚を安心して置く月",
+  "status": "prototype",
+  "current_week": 4,
+  "today_shelf_ids": [
+    "axion-board",
+    "electronic-library"
+  ],
+  "guide": {
+    "home": "今日は全部を動かさなくて大丈夫。灯りを入れる棚を、ひとつかふたつ選びましょう。",
+    "save": "止める理由を書けたら、それは中断ではなく保存です。"
+  },
+  "priorities": [
+    "Axion Boardをスマホで見やすい形にする",
+    "電子書斎と読書の導線を細く続ける",
+    "創作棚は勢いで広げすぎず、再開しやすい形で置く"
+  ],
+  "not_to_do": [
+    "全プロジェクトを同時に進めようとしない",
+    "毎日投稿や毎日開発を義務にしない",
+    "スマホ版で細かいToDo管理を始めない"
+  ],
+  "success_conditions": [
+    "今月触る棚がひと目でわかる",
+    "触らない棚にも置く理由がある",
+    "再開するときの最初の一手が残っている"
+  ],
+  "weeks": [
+    {
+      "id": 1,
+      "label": "1週目",
+      "range": "4/27〜5/3"
+    },
+    {
+      "id": 2,
+      "label": "2週目",
+      "range": "5/4〜5/10"
+    },
+    {
+      "id": 3,
+      "label": "3週目",
+      "range": "5/11〜5/17"
+    },
+    {
+      "id": 4,
+      "label": "4週目",
+      "range": "5/18〜5/24"
+    },
+    {
+      "id": 5,
+      "label": "5週目",
+      "range": "5/25〜5/31"
+    }
+  ],
+  "weekly_focus": {
+    "week": 4,
+    "items": [
+      "Axion Board Mobile Rev Bを表示専用で形にする",
+      "電子書斎は読む入口として軽く触る",
+      "置く棚はSave Pointに理由だけ残す"
+    ]
+  },
+  "shelves": [
+    {
+      "id": "toies-letter",
+      "name": "といーずレター",
+      "category": "note運営",
+      "status": "月1メンテ",
+      "priority": "中",
+      "energy": "軽い",
+      "start_week": 1,
+      "end_week": 2,
+      "monthly_goal": "月に一度、問いと感謝の灯りを消さない。",
+      "next_action": "今月の通信に入れたい短い一文をメモする。",
+      "memo": "全部の記事を追う場所ではなく、ゆっくり戻れる小さな港として扱う。",
+      "links": [],
+      "avatar": "logos",
+      "icon_asset_id": "amaryllis_icon_01"
+    },
+    {
+      "id": "personal-note",
+      "name": "個人note",
+      "category": "発信",
+      "status": "種まき",
+      "priority": "低",
+      "energy": "軽い",
+      "start_week": 4,
+      "end_week": 5,
+      "monthly_goal": "無理に増やさず、書きたい芽だけを残す。",
+      "next_action": "日記から転用できる一文をひとつ拾う。",
+      "memo": "毎日投稿の義務にしない。生活と読書の余白を守る。",
+      "links": [],
+      "avatar": "ordina",
+      "icon_asset_id": "axion_icon_01"
+    },
+    {
+      "id": "electronic-library",
+      "name": "電子書斎",
+      "category": "読書・知的生産",
+      "status": "公開中",
+      "priority": "高",
+      "energy": "軽い",
+      "start_week": 1,
+      "end_week": 5,
+      "monthly_goal": "読む、抜き書きする、戻る、の入口として使う。",
+      "next_action": "読書中の本を1冊開き、短い抜き書きか感想を残す。",
+      "memo": "開発より実運用を優先する。読書に戻るための棚。",
+      "links": [
+        "https://chemengpapa.github.io/denshosai-rev8.1/"
+      ],
+      "avatar": "ordina",
+      "icon_asset_id": "logos_icon_01"
+    },
+    {
+      "id": "sanshimai-rpg",
+      "name": "三姉妹RPG",
+      "category": "創作・技術実験",
+      "status": "保留",
+      "priority": "中",
+      "energy": "中",
+      "start_week": 1,
+      "end_week": 3,
+      "monthly_goal": "広げずに、動いたMVPの価値を棚に置く。",
+      "next_action": "MVPで良かった点と、次に直す一点だけを書く。",
+      "memo": "第2章、装備、配信準備へ広げない。世界が遊べる形になった事実を保存する。",
+      "links": [],
+      "avatar": "axion",
+      "icon_asset_id": "ordina_icon_01"
+    },
+    {
+      "id": "axion-board",
+      "name": "Axion Board",
+      "category": "個人用ボード",
+      "status": "棚化中",
+      "priority": "高",
+      "energy": "中",
+      "start_week": 4,
+      "end_week": 5,
+      "monthly_goal": "スマホで見やすい表示専用プロトタイプを作る。",
+      "next_action": "Rev Bを別フォルダで起動し、ホームとセーブポイントの感触を見る。",
+      "memo": "保存機能はまだ作らない。使いたいと思える画面になればRev Bは勝ち。",
+      "links": [],
+      "avatar": "axion",
+      "icon_asset_id": "axion_icon_01"
+    },
+    {
+      "id": "technical-shelf",
+      "name": "技術棚",
+      "category": "専門性",
+      "status": "保留",
+      "priority": "中",
+      "energy": "重い",
+      "start_week": 5,
+      "end_week": 5,
+      "monthly_goal": "今月は具体情報を入れず、抽象化したテーマだけ置く。",
+      "next_action": "再開するなら、一般化した目次案を3つだけ書く。",
+      "memo": "機密情報や具体的な業務情報は入れない。重い棚なので置く理由を優先する。",
+      "links": [],
+      "avatar": "logos",
+      "icon_asset_id": "logos_icon_01"
+    }
+  ],
+  "parking_lot": [
+    {
+      "shelf_id": "sanshimai-rpg",
+      "reason": "MVPは動いた。今月は広げず、記録して置く。"
+    },
+    {
+      "shelf_id": "technical-shelf",
+      "reason": "重い棚なので、今月は一般化した目次案までで止める。"
+    },
+    {
+      "shelf_id": "personal-note",
+      "reason": "投稿数より、生活と読書の余白を優先する。"
+    }
+  ],
+  "savepoints": [
+    {
+      "id": "save-axion-board",
+      "shelf_id": "axion-board",
+      "saved_at": "2026-05-23",
+      "current_location": "スマホ表示専用Rev Bの試作段階。",
+      "completed": "既存Rev2の構成確認と、スマホ版の画面方針整理は完了。",
+      "resume_next": "ホーム、月間、棚詳細、Save Point、設定の表示確認をする。",
+      "stop_reason": "今日は表示専用で十分。保存機能まで広げない。",
+      "resume_conditions": "スマホで見て、文字サイズとカード密度に違和感が出たとき。",
+      "forgettable": "PWA、localStorage、JSONインポートの細部はRev C以降まで忘れてよい。",
+      "icon_asset_id": "axion_icon_01",
+      "notes": ""
+    },
+    {
+      "id": "save-sanshimai-rpg",
+      "shelf_id": "sanshimai-rpg",
+      "saved_at": "2026-05-23",
+      "current_location": "三姉妹RPGはMVPの手応えを確認済み。",
+      "completed": "導入会話、戦闘、役割分担、勝利条件の最小体験は成立。",
+      "resume_next": "次に触るなら、戦闘ログの読みやすさだけを見る。",
+      "stop_reason": "今広げると、Axion Boardの目的から外れて作業が増える。",
+      "resume_conditions": "生活リズムと本業が落ち着き、創作棚を触る週に入ったとき。",
+      "forgettable": "装備、レベル、配信準備、次章実装は今月は忘れてよい。",
+      "icon_asset_id": "ordina_icon_01",
+      "notes": ""
+    },
+    {
+      "id": "save-technical-shelf",
+      "shelf_id": "technical-shelf",
+      "saved_at": "2026-05-23",
+      "current_location": "抽象化した技術テーマとして置いている。",
+      "completed": "扱うときは機密情報を入れない方針を確認済み。",
+      "resume_next": "一般化した目次を3つだけ書く。",
+      "stop_reason": "重い棚なので、スマホ版の試作とは同時に進めない。",
+      "resume_conditions": "月末レビューで来月も触る棚に選んだとき。",
+      "forgettable": "具体的な案件名、社内固有名、細かな作業手順は忘れてよい。",
+      "icon_asset_id": "logos_icon_01",
+      "notes": ""
+    }
+  ],
+  "settings_preview": [
+    "JSONエクスポート",
+    "JSONインポート",
+    "localStorage保存",
+    "PWA対応",
+    "テーマ切替",
+    "データ初期化"
+  ],
+  "updated_at": "",
+  "assets": [
+    {
+      "id": "axion_icon_01",
+      "type": "icon",
+      "path": "assets/icons/axion_icon_01.png",
+      "label": "アクシオン"
+    },
+    {
+      "id": "amaryllis_icon_01",
+      "type": "icon",
+      "path": "assets/icons/amaryllis_icon_01.png",
+      "label": "アマリリス"
+    },
+    {
+      "id": "ordina_icon_01",
+      "type": "icon",
+      "path": "assets/icons/ordina_icon_01.png",
+      "label": "オルディナ"
+    },
+    {
+      "id": "logos_icon_01",
+      "type": "icon",
+      "path": "assets/icons/logos_icon_01.png",
+      "label": "ロゴス"
+    }
+  ],
+  "settings": {
+    "current_board_id": "2026-05",
+    "theme": "lunier",
+    "guide_character_asset_id": "axion_icon_01",
+    "last_saved_at": ""
+  }
+}
