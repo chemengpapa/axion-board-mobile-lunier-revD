@@ -281,6 +281,20 @@ document.addEventListener("click", async (event) => {
     return;
   }
 
+  const refreshAppButton = event.target.closest("[data-refresh-app-cache]");
+  if (refreshAppButton) {
+    try {
+      if ("serviceWorker" in navigator) {
+        const registration = await navigator.serviceWorker.getRegistration();
+        if (registration) await registration.update();
+      }
+      showToast("アプリ更新を確認しました。必要なら再読み込みしてください。");
+    } catch (error) {
+      showToast(`アプリ更新を確認できませんでした: ${error.message}`, "error");
+    }
+    return;
+  }
+
   const resetButton = event.target.closest("[data-reset-data]");
   if (resetButton) {
     const ok = window.confirm("RevDの保存データを初期データに戻します。現在の保存データは last-good に退避します。");

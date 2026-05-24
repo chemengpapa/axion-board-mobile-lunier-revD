@@ -16,20 +16,43 @@ function formatDateTime(value) {
 
 export function renderSettingsView(board, storageInfo = {}) {
   const lastSavedAt = board.settings?.last_saved_at || storageInfo.last_saved_at || "";
-  const nextItems = [
-    "PWA対応",
-    "manifest.json",
-    "service worker",
-    "オフラインキャッシュ",
+  const laterItems = [
     "IndexedDB移行",
-    "Rev2との同期"
+    "Rev2との自動同期",
+    "棚の新規追加・削除",
+    "月追加",
+    "クラウド同期"
   ];
 
   return `
     <section class="page-title">
       <p class="eyebrow">Settings</p>
       <h1>設定</h1>
-      <p>RevDでは、JSONバックアップと復元を扱います。</p>
+      <p>RevEでは、JSONバックアップとPWAとしてのホーム画面追加を扱います。</p>
+    </section>
+
+    <section class="page-section">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">PWA</p>
+          <h2>ホーム画面に追加</h2>
+        </div>
+      </div>
+      <div class="settings-list">
+        <article class="settings-panel">
+          <h3>アプリのように起動できます</h3>
+          <p>AndroidはChromeのメニューから「ホーム画面に追加」を選ぶと、アプリのように起動できます。iPhoneはSafariの共有メニューから「ホーム画面に追加」を選びます。</p>
+        </article>
+        <article class="settings-panel">
+          <h3>データ保存の注意</h3>
+          <p>編集データはこのブラウザのlocalStorageに保存されます。端末やブラウザを変えると共有されないため、定期的にJSONを書き出してバックアップしてください。</p>
+        </article>
+        <article class="settings-panel">
+          <h3>オフライン利用</h3>
+          <p>一度オンラインで開いた後は、最低限の画面と主要アセットをキャッシュして表示できます。画像やアプリ更新が反映されない場合は、再読み込みやアプリ更新確認を試してください。</p>
+          <button class="secondary-button" type="button" data-refresh-app-cache>アプリ更新を確認</button>
+        </article>
+      </div>
     </section>
 
     <section class="page-section">
@@ -42,12 +65,12 @@ export function renderSettingsView(board, storageInfo = {}) {
       <div class="settings-list">
         <article class="settings-panel">
           <h3>JSONエクスポート</h3>
-          <p>現在のRevD保存データを、スマホやPCにJSONファイルとして保存します。</p>
+          <p>現在の保存データを、スマホやPCにJSONファイルとして保存します。PWA化後も、安心のため定期的に書き出してください。</p>
           <button class="primary-button" type="button" data-export-json>JSONを書き出す</button>
         </article>
         <article class="settings-panel">
           <h3>JSONインポート</h3>
-          <p>RevD/RevC形式、またはRev2の monthly_plan JSON を読み込みます。読み込み前の状態は last-good に退避します。</p>
+          <p>RevE/RevD/RevC形式、またはRev2の monthly_plan JSON を読み込みます。読み込み前の状態は last-good に退避します。</p>
           <label class="file-import-button">
             <span>JSONを読み込む</span>
             <input type="file" accept="application/json,.json" data-import-json />
@@ -90,7 +113,7 @@ export function renderSettingsView(board, storageInfo = {}) {
 
     <section class="detail-field danger-zone">
       <h2>データ初期化</h2>
-      <p>このブラウザ内のRevD保存データを、seedの初期状態に戻します。実行前に last-good へ退避します。</p>
+      <p>このブラウザ内の保存データを、seedの初期状態に戻します。実行前に last-good へ退避します。</p>
       <button class="secondary-button danger-button" type="button" data-reset-data>初期データに戻す</button>
     </section>
 
@@ -98,14 +121,14 @@ export function renderSettingsView(board, storageInfo = {}) {
       <div class="section-heading">
         <div>
           <p class="eyebrow">Later</p>
-          <h2>今後実装予定</h2>
+          <h2>今後の候補</h2>
         </div>
       </div>
       <div class="settings-list">
-        ${nextItems.map((item) => `
+        ${laterItems.map((item) => `
           <article class="settings-item">
             <span>${escapeHtml(item)}</span>
-            <small>RevE以降</small>
+            <small>RevF以降</small>
           </article>
         `).join("")}
       </div>

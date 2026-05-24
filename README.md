@@ -1,78 +1,81 @@
-# Axion Board Mobile / Lunier RevD
+# Axion Board Mobile / Lunier RevE
 
-RevDは、RevCのスマホ編集とlocalStorage保存を引き継ぎ、JSONエクスポート/インポートと `last-good` からの復元導線を追加した版です。
+RevEは、RevDのスマホ表示、編集、localStorage保存、JSONインポート/エクスポート、棚アイコン変更を維持したまま、GitHub Pages上でPWAとして使えるようにした版です。
 
-既存Rev2、RevB、RevCとは別フォルダです。元フォルダは直接変更しません。
+## RevDとの違い
 
-## RevDの目的
-
-- スマホ上で編集した内容をlocalStorageに保存する
-- 保存データをJSONとして書き出す
-- RevD/RevC形式のJSONを読み込む
-- Rev2の `monthly_plan_YYYY_MM.json` を読み込み、RevD形式へ変換する
-- 読み込みや保存の前の状態を `last-good` に退避し、必要なら復元する
-
-## GitHub Pagesでの想定運用
-
-1. RevDフォルダを、個人データを入れない状態でGitHub Pagesへアップロードする
-2. スマホで公開ページを開く
-3. Rev2で作成した最新JSONをスマホへ送る
-4. 設定画面の「JSONを読み込む」からRev2 JSONをインポートする
-5. スマホ上で編集し、localStorageへ保存する
-6. 必要なタイミングで「JSONを書き出す」からバックアップを保存する
-
-GitHub Pagesにアップするのはアプリ本体だけです。読み込んだJSONはスマホのブラウザ内に保存され、GitHubへ送信されません。
-
-## 保存キー
-
-- 本体: `axion-board-mobile-lunier:revD`
-- メタ情報: `axion-board-mobile-lunier:revD:meta`
-- 直前退避: `axion-board-mobile-lunier:revD:last-good`
-
-## インポートできるJSON
-
-- RevD形式のエクスポートJSON
-- RevC形式の保存JSON
-- Rev2の `monthly_plan_2026_05.json` / `monthly_plan_2026_06.json` のような月間JSON
-
-Rev2 JSONにはSave Point構造がないため、RevDは保留棚や棚情報から初期Save Pointを生成します。
+- `manifest.json` を追加
+- `service-worker.js` を追加
+- `js/pwa.js` でservice workerを登録
+- PWA用アイコンを `assets/pwa/` に追加
+- 設定画面にホーム画面追加とオフライン利用の説明を追加
+- service workerのキャッシュ名を `axion-board-lunier-revE-v1` としてバージョン管理
 
 ## 起動方法
 
+ローカルで確認する場合は、RevEフォルダで静的サーバーを起動します。
+
 ```powershell
-cd "C:\Users\Admin\Desktop\Python関係\Axion Board\axion-board-mobile-lunier-revD"
-python -m http.server 8012
+cd "C:\Users\Admin\Desktop\Python関係\Axion Board\axion-board-mobile-lunier-revE"
+python -m http.server 8013
 ```
 
 ブラウザで開きます。
 
 ```text
-http://localhost:8012/
+http://localhost:8013/
 ```
 
-## スマホ確認方法
+PWA登録は `file://` では動きません。必ず `http://localhost` またはGitHub PagesのHTTPS URLで確認してください。
 
-- PCブラウザのデバイスモードで幅390px前後にする
-- 設定画面でJSONエクスポート/インポートを確認する
-- Rev2 JSONを読み込み、月間テーマや棚が反映されることを確認する
-- 何か編集して保存し、再読み込み後も残ることを確認する
-- last-goodから復元できることを確認する
+## GitHub Pagesへの配置
+
+リポジトリ直下に以下が並ぶようにアップロードします。
+
+```text
+assets/
+css/
+data/
+docs/
+js/
+index.html
+manifest.json
+service-worker.js
+README.md
+```
+
+GitHub Pagesの設定は、Branchを `main`、Folderを `/(root)` にします。サブディレクトリ配信でも壊れにくいよう、PWA関連のパスは `./` から始まる相対パスを使っています。
+
+## スマホでホーム画面に追加
+
+Android:
+
+Chromeのメニューから「ホーム画面に追加」を選ぶと、アプリのように起動できます。
+
+iPhone:
+
+Safariの共有メニューから「ホーム画面に追加」を選ぶと、アプリのように起動できます。
+
+## データ保存の注意
+
+- 編集データはブラウザ内のlocalStorageに保存されます。
+- 端末やブラウザを変えるとデータは共有されません。
+- RevEではRevDからの移行でデータを失いにくいよう、保存キーはRevD系を維持しています。
+- 定期的に設定画面からJSONを書き出してバックアップしてください。
+- 読み込んだJSONはGitHubへ送信されません。スマホのブラウザ内で処理されます。
+
+## オフライン利用
+
+一度オンラインで開くと、service workerがアプリシェル、CSS、JS、seed JSON、主要画像、PWAアイコンをキャッシュします。次回以降はオフラインでも最低限の画面を開けます。
+
+完全な初回起動にはネットワークが必要です。画像やアプリ更新が反映されない場合は、設定画面の「アプリ更新を確認」を押してから再読み込みしてください。
 
 ## 既知の制限
 
-- PWA、manifest、service workerは未実装
-- オフラインキャッシュは未実装
-- IndexedDBは未使用
-- Rev2との自動同期はしない
-- JSONインポートはブラウザ上で選択したファイルのみ扱う
-- 棚の新規追加、削除、月追加は未実装
+- IndexedDBは未使用です。
+- Rev2との自動同期はありません。
+- 棚の新規追加、削除、月追加は未実装です。
+- オフライン中のJSONインポートは、端末側のファイル選択UIに依存します。
+- service workerの更新反映には、再読み込みやブラウザ再起動が必要な場合があります。
 
-RevDでは、スマホローカルで編集、保存、JSONバックアップ、読み戻しまでを扱います。PWA化はRevE以降で十分です。
-
-## 軽量アイコンと棚編集
-
-- `C:\Users\Admin\Desktop\Python関係\Axion Board\icon` の主要キャラアイコン33件を、RevD内の `assets/icons/characters/` に軽量WebPとして追加しました。
-- 元PNG合計は約78MB、WebP合計は約1MBです。
-- 棚詳細の編集シートで「棚アイコン」を選べます。
-- 保存されるのは `icon_asset_id` だけなので、localStorageやJSONは重くなりません。
-- 画像ファイル自体はGitHub Pagesに置く前提です。公開リスクが気になる素材は、アップロード前に `assets/icons/characters/` から外してください。
+RevEでは、Axion BoardをPWAとしてホーム画面に置ける段階まで進めています。JSONバックアップは引き続き大切です。
